@@ -1,0 +1,11 @@
+{
+  "name":"C.Ludo",
+  "short_name":"C.Ludo",
+  "start_url":"./index.html",
+  "display":"standalone",
+  "background_color":"#090d18",
+  "theme_color":"#111827",
+  "lang":"fa",
+  "dir":"rtl",
+  "icons":[]
+}
