@@ -270,7 +270,9 @@ body{
   display:none;
   align-items:center;
   justify-content:center;
-  background:#0b1020e8;
+  background:
+    linear-gradient(#0006,#0008),
+    url("menu-background.jpg") center/cover no-repeat;
   backdrop-filter:blur(10px);
   z-index:5
 }
