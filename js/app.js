@@ -18,7 +18,7 @@ const NAMES=[
 
 const T={
   en:{
-    play:'Play vs AI',
+    play:'Play Game',
     local:'Local Multiplayer',
     cont:'Continue',
     prof:'Profile & Stats',
@@ -58,7 +58,7 @@ const T={
   },
 
   fa:{
-    play:'بازی با هوش مصنوعی',
+    play:'بازی کردن',
     local:'چندنفره محلی',
     cont:'ادامه بازی',
     prof:'پروفایل و آمار',
