@@ -27,33 +27,7 @@
   <canvas id="c"></canvas>
 
   <div id="dock">
-
-    <div
-      class="scene"
-      role="button"
-      tabindex="0"
-      aria-label="Roll dice"
-      onclick="document.getElementById('roll').click()"
-      onkeydown="if(event.key==='Enter'||event.key===' '){document.getElementById('roll').click()}"
-    >
-      <div class="cube" id="cube">
-        <b class="f f1">⚀</b>
-        <b class="f f2">⚁</b>
-        <b class="f f3">⚂</b>
-        <b class="f f4">⚃</b>
-        <b class="f f5">⚄</b>
-        <b class="f f6">⚅</b>
-      </div>
-    </div>
-
-    <!-- Hidden compatibility button: JS can still use #roll -->
-    <button
-      id="roll"
-      class="btn"
-      tabindex="-1"
-      aria-hidden="true"
-    ></button>
-
+    <div id="dice-dock"></div>
   </div>
 </div>
 
