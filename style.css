@@ -1,4 +1,5 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
 html,body{
   margin:0;
   height:100%;
@@ -79,7 +80,6 @@ body{
   padding:6px 12px
 }
 
-/* FIXED BOARD */
 #board-wrap{
   position:relative;
   width:min(100vw,560px);
@@ -102,59 +102,93 @@ body{
   object-fit:contain
 }
 
-/* DICE DOCK - BOTTOM */
+/* =========================
+   FOUR PLAYER DICE
+   ========================= */
+
 #dock{
   position:absolute;
-  left:50%;
-  bottom:10px;
-  top:auto;
-  right:auto;
-  transform:translateX(-50%);
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:4
+}
+
+#dice-dock{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none
+}
+
+.player-dice{
+  position:absolute;
+  width:68px;
+  height:68px;
   display:flex;
-  flex-direction:column;
   align-items:center;
-  gap:6px;
-  z-index:4;
-  transition:all .45s
+  justify-content:center;
+  pointer-events:none;
+  transition:.35s;
+  z-index:4
 }
 
-/* همه حالت‌های قبلی داک در پایین باقی می‌مانند */
-#dock.tl,
-#dock.tr,
-#dock.br,
-#dock.bl{
-  left:50%;
-  right:auto;
-  top:auto;
-  bottom:10px;
-  transform:translateX(-50%)
+.player-dice.p0{
+  left:8px;
+  top:8px
 }
 
-/* دکمه قدیمی مخفی */
-#dock .btn{
-  display:none
+.player-dice.p1{
+  right:8px;
+  top:8px
 }
 
-/* خود تاس قابل لمس است */
-.scene{
-  width:52px;
-  height:52px;
+.player-dice.p2{
+  right:8px;
+  bottom:8px
+}
+
+.player-dice.p3{
+  left:8px;
+  bottom:8px
+}
+
+.player-dice.active{
+  pointer-events:auto;
+  z-index:10
+}
+
+.player-dice.inactive{
+  opacity:.25;
+  filter:grayscale(.75)
+}
+
+.player-dice .scene{
+  width:58px;
+  height:58px;
   perspective:400px;
   filter:drop-shadow(0 0 10px var(--dc,#7aa2ff));
   cursor:pointer;
-  touch-action:manipulation
+  touch-action:manipulation;
+  pointer-events:none
 }
 
-.cube{
-  width:52px;
-  height:52px;
+.player-dice.active .scene{
+  pointer-events:auto
+}
+
+.player-dice .cube{
+  width:58px;
+  height:58px;
   position:relative;
   transform-style:preserve-3d;
   transition:transform 1s cubic-bezier(.2,.8,.3,1);
   cursor:pointer
 }
 
-.cube.toss{
+.player-dice .cube.toss{
   animation:toss 1s
 }
 
@@ -165,26 +199,43 @@ body{
   100%{translate:0 0}
 }
 
-.f{
+.player-dice .f{
   position:absolute;
-  width:52px;
-  height:52px;
+  width:58px;
+  height:58px;
   background:linear-gradient(135deg,#fff,#cfd6ea);
   color:#111;
   border-radius:10px;
-  font-size:42px;
-  line-height:52px;
+  font-size:44px;
+  line-height:58px;
   text-align:center;
   backface-visibility:hidden;
   box-shadow:inset 0 0 8px #0004
 }
 
-.f1{transform:translateZ(26px)}
-.f2{transform:rotateY(90deg) translateZ(26px)}
-.f3{transform:rotateX(90deg) translateZ(26px)}
-.f4{transform:rotateX(-90deg) translateZ(26px)}
-.f5{transform:rotateY(-90deg) translateZ(26px)}
-.f6{transform:rotateY(180deg) translateZ(26px)}
+.player-dice .f1{transform:translateZ(29px)}
+.player-dice .f2{transform:rotateY(90deg) translateZ(29px)}
+.player-dice .f3{transform:rotateX(90deg) translateZ(29px)}
+.player-dice .f4{transform:rotateX(-90deg) translateZ(29px)}
+.player-dice .f5{transform:rotateY(-90deg) translateZ(29px)}
+.player-dice .f6{transform:rotateY(180deg) translateZ(29px)}
+
+.dice-name{
+  position:absolute;
+  top:-17px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:10px;
+  font-weight:900;
+  white-space:nowrap;
+  text-shadow:0 2px 5px #000;
+  pointer-events:none
+}
+
+.player-dice.p0 .dice-name{color:#e5484d}
+.player-dice.p1 .dice-name{color:#30a46c}
+.player-dice.p2 .dice-name{color:#f5c518}
+.player-dice.p3 .dice-name{color:#3e63dd}
 
 .btn{
   background:linear-gradient(#5b86ff,#3b5bd9);
@@ -400,8 +451,8 @@ body{
   font-size:17px
 }
 
-/* MOBILE FIX */
-@media (max-width:560px){
+@media(max-width:560px){
+
   #hud{
     max-width:100%;
     padding:7px 10px
@@ -413,7 +464,28 @@ body{
     max-height:calc(100vh - 48px)
   }
 
-  #dock{
-    bottom:max(8px,env(safe-area-inset-bottom))
+  .player-dice{
+    width:62px;
+    height:62px
+  }
+
+  .player-dice.p0{
+    left:5px;
+    top:5px
+  }
+
+  .player-dice.p1{
+    right:5px;
+    top:5px
+  }
+
+  .player-dice.p2{
+    right:5px;
+    bottom:5px
+  }
+
+  .player-dice.p3{
+    left:5px;
+    bottom:5px
   }
 }
