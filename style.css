@@ -3,7 +3,7 @@
 html,body{
   margin:0;
   height:100%;
-  background:radial-gradient(circle at 50% 0,#1d2a5c,#0b1020 70%);
+  background:url("match-bg.jpg") center/cover no-repeat fixed;
   color:#fff;
   font-family:system-ui,sans-serif;
   overflow:hidden
@@ -322,7 +322,9 @@ body{
 
 .menu-card{
   border:3px solid #f5c518;
-  background:radial-gradient(circle at 50% -10%,#233a7a,#0d1330 70%);
+  background:
+    linear-gradient(#0005,#0008),
+    url("menu-bg.jpg") center/cover no-repeat;
   box-shadow:0 0 50px #000a,inset 0 0 30px #0006
 }
 
